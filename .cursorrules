@@ -1,0 +1,30 @@
+PROJECT: Cognitron AI — a goal-aware, personalized AI study companion for CBSE students.
+
+STACK: React (frontend), Node.js/Express (backend), SQLite (database), LLM calls via 
+[Anthropic/OpenAI — confirm which] API. Never train a custom model — all AI capability 
+comes from calling an existing LLM's API.
+
+CORE DATA MODEL:
+- Student: { id, name, class, goal (class_test | midsem | board | competitive), subjects[] }
+- Topic: { id, subject, chapter, name, prerequisites: [topic_id], mastery: 0-100 }
+- StudySession: { student_id, topic_id, level (scratch | moderate | revision), time_budget_minutes }
+
+DESIGN LANGUAGE:
+Brand name: Cognitron AI (small sparkle/diamond mark next to the name)
+Palette: soft lavender-purple primary (#7C6FE0 range), warm cream background (#F5F0E8), 
+white cards with soft shadows, muted dark-charcoal text (#2E2A3D)
+Typography: elegant serif for headings/decorative quotes (e.g. Playfair Display), 
+clean sans-serif for body/nav text (e.g. Inter or Poppins)
+Layout: left sidebar nav (Home, Learn, Practice, Test, Knowledge Map, AI Copilot/Doubt Box), 
+top bar with search, date, notification bell, profile avatar
+Cards: rounded corners (~18px radius), soft drop shadows, generous whitespace
+Buttons: solid purple, pill-shaped, white text, right-arrow icon on primary CTAs
+Progress display: LeetCode-style bubble cluster (one circle per topic, sized/colored by 
+mastery), NOT a single aggregate ring
+
+RULES:
+- Keep components small and single-purpose
+- Every feature must work against the CORE DATA MODEL above — don't invent a new shape per feature
+- Comment any LLM prompt-construction code clearly, since teammates need to tweak wording
+- Favor plain, readable code over cleverness — team needs to debug this live during the hackathon
+- Never hardcode API keys — always read from environment variables
